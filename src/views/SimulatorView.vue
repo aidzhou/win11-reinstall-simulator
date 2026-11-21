@@ -104,7 +104,7 @@ function next() {
         <div class="bios-top"><b>UEFI BIOS Utility</b><span>EZ Mode　Advanced Mode</span></div>
         <div class="bios-tabs"><span>Main</span><span>Advanced</span><span>Boot</span><span>Security</span><span>Save & Exit</span></div>
         <div class="bios-body"><div class="bios-left"><small>Boot Priority</small><h3>启动设备顺序</h3><p>选择本次启动使用的设备。优先选择带 UEFI 标识的 USB 设备。</p>
-          <button v-for="item in ['Windows Boot Manager','UEFI: USB Storage Device','SATA SSD: 1TB']" :key="item" :class="{ bios-selected: biosBoot === item }" @click="biosBoot = item"><span>≡</span>{{ item }} <b>{{ biosBoot === item ? '◆' : '◇' }}</b></button>
+          <button v-for="item in ['Windows Boot Manager','UEFI: USB Storage Device','SATA SSD: 1TB']" :key="item" :class="{ 'bios-selected': biosBoot === item }" @click="biosBoot = item"><span>≡</span>{{ item }} <b>{{ biosBoot === item ? '◆' : '◇' }}</b></button>
           <div class="bios-hint">↑ ↓ 选择设备　Enter 确认</div></div><div class="bios-right"><div><small>Boot Mode</small><b>UEFI</b></div><div><small>Secure Boot</small><b>Enabled</b></div><div><small>TPM Device</small><b>Available</b></div></div></div>
         <div class="bios-footer"><span>F1 Help　F10 Save & Exit　ESC Exit</span><button :class="{ finished: isDone('choose-uefi-usb') }" @click="choose('choose-uefi-usb', biosBoot.includes('UEFI'), biosBoot.includes('UEFI') ? '已选择 UEFI USB 启动项。' : '当前选择不是 UEFI USB，请重新选择。')">{{ isDone('choose-uefi-usb') ? '✓ 已确认启动项' : '确认启动设备' }}</button><button :class="{ finished: isDone('avoid-random-settings') }" @click="choose('avoid-random-settings')">{{ isDone('avoid-random-settings') ? '✓ 已确认' : '保持其他设置不变' }}</button></div>
       </div>
